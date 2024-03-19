@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <style>
+    table {
+        margin-bottom: 20px;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    .right {
+        text-align: right;
+    }
+
     .date-picker {
         margin: 200px auto;
         width: 900px;
@@ -28,6 +42,36 @@
 </head>
 <body>
     <div class="date-picker">
+        <table>
+            <thead>
+                <tr>
+                    <th>4 weeks or more (base price)</th>
+                    <th class="right">$39.99</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3-4 weeks</td>
+                    <td>+ $10.00</td>
+                </tr>
+                <tr>
+                    <td>2-3 weeks</td>
+                    <td>+ $20.00</td>
+                </tr>
+                <tr>
+                    <td>1-2 weeks</td>
+                    <td>+ $30.00</td>
+                </tr>
+                <tr>
+                    <td>0-1 week</td>
+                    <td>+ $40.00</td>
+                </tr>
+                <tr>
+                    <td>24 hours or less</td>
+                    <td>+ $50.00</td>
+                </tr>
+            </tbody>
+        </table>
         <input type="text" name="date" id="date" placeholder="Select travel dates">
         <div class="result"></div>
     </div>
