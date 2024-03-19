@@ -6,39 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <style>
-    table {
-        margin-bottom: 20px;
-    }
-
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-
-    .right {
-        text-align: right;
-    }
-
-    .date-picker {
-        margin: 200px auto;
-        width: 900px;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    .date-picker input {
-        width: 400px;
-        height: 40px;
-    }
-
-    .result {
-        margin-top: 40px; 
-    }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <div class="date-picker">
@@ -75,51 +45,5 @@
         <input type="text" name="date" id="date" placeholder="Select travel dates">
         <div class="result"></div>
     </div>
-    
-    <script>
-        const $result = document.querySelector('.result'); 
-
-        const today = new Date(); 
-
-        const fp = flatpickr('#date', {
-    		mode: 'range',
-            altInput: true,
-            enableTime: true,
-            altFormat: 'D M j',
-            dateFormat: 'Y-m-d',
-            onValueUpdate: (selectedDates, dateStr, instance) => {
-                const startDate = dateStr.split('to')[0].trim(); 
-                const days = Math.ceil( ( new Date(startDate).getTime() - today.getTime() ) / (1000 * 60 * 60 * 24) ); 
-                const weeks = days / 7; 
-                let price = 39.99;
-
-                if (weeks >= 3 && weeks < 4) {
-                    price += 10;  
-                }
-                else if (weeks >= 2 && weeks < 3) {
-                    price += 10 * 2;  
-                }
-                else if (weeks >= 1 && weeks < 2) {
-                    price += 10 * 3;  
-                }
-                else if (weeks < 1 && days > 1) {
-                    price += 10 * 4;  
-                }
-                else if (days <= 1) {
-                    price += 10 * 5;
-                }
-
-                $result.innerHTML = `<b><i>Selected dates:</i></b> ${dateStr}
-                                    <br><br>
-                                    <b><i>Today:</i></b> ${new Date().toDateString()}
-                                    <br><br>
-                                    <b><i>No. of days:</i></b> ${days}
-                                    <br><br>
-                                    <b><i>No. of weeks:</i></b> ${weeks.toFixed(1)}
-                                    <br><br>
-                                    <b><i>Price:</i></b> ${price.toFixed(2)}`;
-            },
-        });
-    </script>
 </body>
 </html> 
